@@ -1,5 +1,7 @@
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import { WatcherIndex } from './views/watcher-index';
+import { WatcherEdit } from './views/watcher-edit';
+
 import './assets/scss/global.scss';
 
 function App() {
@@ -9,6 +11,8 @@ function App() {
                 {/* <AppHeader /> */}
                 <main className='container'>
                     <Switch>
+                        <Route path="/watcher/edit/:id?" component={WatcherEdit} />
+                        <Route path="/watcher/:id" component={WatcherDetails} />
                         <Route path="/" component={WatcherIndex} />
                     </Switch>
                 </main>

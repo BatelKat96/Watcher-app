@@ -4,9 +4,9 @@ import { makeId } from './util.service.js'
 
 export const watcherService = {
     query,
-    // save,
+    save,
     remove,
-    // getById,
+    getById,
     getEmptyWatcher,
     // tryRobot
 }
@@ -31,15 +31,11 @@ function query(filterBy) {
     return Promise.resolve([...watchersToReturn])
 }
 
-// function tryRobot(id) {
-//     const robot = gRobots.find(robot => robot._id === id)
-//     robot.batteryStatus -= 10
-//     return Promise.resolve()
-// }
-// function getById(id) {
-//     const robot = gRobots.find(robot => robot._id === id)
-//     return Promise.resolve({ ...robot })
-// }
+
+function getById(id) {
+    const watcher = gWatchers.find(watcher => watcher._id === id)
+    return Promise.resolve({ ...watcher })
+}
 
 function remove(id) {
     const idx = gWatchers.findIndex(watcher => watcher._id === id)
@@ -49,26 +45,19 @@ function remove(id) {
     return Promise.resolve()
 }
 
-// function save(robotToSave) {
-//     if (robotToSave._id) {
-//         const idx = gRobots.findIndex(robot => robot._id === robotToSave._id)
-//         gRobots.splice(idx, 1, robotToSave)
-//     } else {
-//         robotToSave._id = makeId()
-//         robotToSave.batteryStatus = 100
-//         gRobots.push(robotToSave)
-//     }
-//     storageService.store(STORAGE_KEY, gRobots)
-//     return Promise.resolve(robotToSave)
+function save(watcherToSave) {
+    if (watcherToSave._id) {
+        const idx = gWatchers.findIndex(watcher => watcher._id === watcherToSave._id)
+        gWatchers.splice(idx, 1, watcherToSave)
+    } else {
+        watcherToSave._id = makeId()
+        gWatchers.push(watcherToSave)
+    }
+    storageService.store(STORAGE_KEY, gWatchers)
+    return Promise.resolve(watcherToSave)
 
-// }
+}
 
-// function getEmptyRobot() {
-//     return {
-//         model: '',
-//         type: ''
-//     }
-// }
 
 
 function _loadWatchers() {

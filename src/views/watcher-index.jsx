@@ -25,10 +25,12 @@ class _WatcherIndex extends Component {
 
     render() {
         const { watchers } = this.props
+        if (!watchers) return <div>Loading...</div>
+
         return (
             <section className='watcher-index-section'>
                 <h1>Watcher App</h1>
-                <Link to='/robot/edit'>Add Watcher</Link>
+                <Link to='/watcher/edit'>Add Watcher</Link>
                 <ErrorBoundary>
                     <WatcherList watchers={watchers} onRemoveWatcher={this.onRemoveWatcher} />
                 </ErrorBoundary>
