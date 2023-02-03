@@ -20,8 +20,6 @@ export class WatcherDetails extends Component {
     }
 
     loadWatcher = async () => {
-
-
         const watcher = await watcherService.getById(this.props.match.params.id)
         this.setState({ watcher: watcher })
     }

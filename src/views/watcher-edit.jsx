@@ -40,12 +40,7 @@ export class WatcherEdit extends Component {
             default:
                 break;
         }
-
-        if (field === 'movies') {
-            let newValue = value.split(',')
-            this.setState(prevState => ({ watcher: { ...prevState.watcher, [field]: newValue } }))
-        }
-        else this.setState(prevState => ({ watcher: { ...prevState.watcher, [field]: value } }))
+        this.setState(prevState => ({ watcher: { ...prevState.watcher, [field]: value } }))
     }
 
     onBack = () => {

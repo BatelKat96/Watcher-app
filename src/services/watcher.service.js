@@ -46,6 +46,7 @@ function remove(id) {
 }
 
 function save(watcherToSave) {
+    watcherToSave.movies = watcherToSave.movies.split(',')
     if (watcherToSave._id) {
         const idx = gWatchers.findIndex(watcher => watcher._id === watcherToSave._id)
         gWatchers.splice(idx, 1, watcherToSave)
@@ -59,7 +60,6 @@ function save(watcherToSave) {
 }
 
 
-
 function _loadWatchers() {
     let watchers = storageService.load(STORAGE_KEY)
     if (!watchers || !watchers.length) watchers = _createWatchers()
@@ -69,18 +69,18 @@ function _loadWatchers() {
 
 
 
-function getEmptyWatcher(name = '', movies1 = '') {
-    return { _id: '', name, movies: [movies1] }
+function getEmptyWatcher(name = '', movies = []) {
+    return { _id: '', name, movies }
 }
 
 function _createWatchers() {
     let watchers = storageService.load(STORAGE_KEY)
     if (!watchers || !watchers.length) {
         watchers = []
-        watchers.push(_createWatcher('audu jj', ['Rambo', 'Rocky']))
-        watchers.push(_createWatcher('fiak fgh', ['Mambo', 'Mocky']))
-        watchers.push(_createWatcher('subali gg', ['Pambo', 'Pocky']))
-        watchers.push(_createWatcher('mitsu ew', ['Aambo', 'Aocky']))
+        watchers.push(_createWatcher('Mam', ['Sixteen Candles', 'The Blind Side']))
+        watchers.push(_createWatcher('Dad', ['Rambo', 'Rocky']))
+        watchers.push(_createWatcher('Roni', ['The Fast and the Furious', 'Captain America']))
+        watchers.push(_createWatcher('Shiri', ['Harry Potter and the Sorcerer\'s Stone', 'Step Up']))
 
         storageService.store(STORAGE_KEY, watchers)
         return watchers
