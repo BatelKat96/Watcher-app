@@ -19,7 +19,7 @@ function App() {
                 </main>
                 <footer>
                     <section className='container'>
-                        robotRights 2022 &copy;
+                        watcherRights 2022 &copy;
                     </section>
                 </footer>
 

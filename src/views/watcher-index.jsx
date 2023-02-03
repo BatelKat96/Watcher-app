@@ -30,7 +30,7 @@ class _WatcherIndex extends Component {
         return (
             <section className='watcher-index-section'>
                 <h1>Watcher App</h1>
-                <Link to='/watcher/edit'>Add Watcher</Link>
+                <Link to='/watcher/edit' className='add-watchers2'>Add Watcher</Link>
                 <ErrorBoundary>
                     <WatcherList watchers={watchers} onRemoveWatcher={this.onRemoveWatcher} />
                 </ErrorBoundary>

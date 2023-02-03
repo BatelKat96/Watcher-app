@@ -46,7 +46,7 @@ export class WatcherDetails extends Component {
 
                 <img src={`https://robohash.org/${watcher._id}`} alt="" />
                 <br />
-                <button onClick={this.onBack}>Back</button>
+                <button className='clean-btn btn btn-action' onClick={this.onBack}>Back</button>
 
             </div>
         )

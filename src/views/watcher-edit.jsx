@@ -53,29 +53,32 @@ export class WatcherEdit extends Component {
 
         const { name, movies } = watcher
         return (
-            <section className='robot-edit'>
+            <section className='watcher-edit-section'>
                 <h1>{watcher._id ? 'Edit' : 'Add'} Watcher</h1>
                 <form onSubmit={this.onAddWatcher}>
-                    <label htmlFor="name">Name</label>
-                    <input onChange={this.handleChange}
-                        value={name}
-                        type="text"
-                        name="name"
-                        id="name"
-                        placeholder='Enter name...'
-                        required />
-                    <br />
-                    <label htmlFor="movies">Movies</label>
-                    <input onChange={this.handleChange}
-                        value={movies}
-                        type="text"
-                        name="movies"
-                        id="movies"
-                        placeholder='Enter movies... xxx, yyy'
-                        required />
-                    <br />
-                    <button type='submit'>Save</button>
-                    <button onClick={this.onBack}>Back</button>
+                    <label htmlFor="name">Name:
+                        <input onChange={this.handleChange}
+                            value={name}
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder='Enter name...'
+                            required />
+                    </label>
+
+                    <label htmlFor="movies">Movies:
+                        <textarea onChange={this.handleChange}
+                            className="movies-input"
+                            value={movies}
+                            type="text"
+                            name="movies"
+                            id="movies"
+                            placeholder='Enter movies... xxx, yyy'
+                            required />
+                    </label>
+
+                    <button className='clean-btn btn btn-action' type='submit'>Save</button>
+                    <button className='clean-btn btn btn-action' onClick={this.onBack}>Back</button>
 
                 </form>
             </section>

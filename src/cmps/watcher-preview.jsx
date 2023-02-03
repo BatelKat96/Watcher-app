@@ -10,7 +10,7 @@ export function WatcherPreview({ watcher, onRemoveWatcher }) {
                 <h2>{watcher.name}</h2>
             </Link>
             <section className="actions">
-                <button onClick={() => onRemoveWatcher(watcher._id)}>X</button>
+                <button className='clean-btn btn-remove' onClick={() => onRemoveWatcher(watcher._id)}>Remove</button>
                 <Link to={`/watcher/edit/${watcher._id}`}>Edit</Link>
             </section>
         </section>

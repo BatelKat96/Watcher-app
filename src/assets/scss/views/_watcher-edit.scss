@@ -1,0 +1,17 @@
+.watcher-edit-section {
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    label {
+        margin: 10px;
+        display: flex;
+        text-align: center;
+        gap: 10px;
+
+        .movies-input {
+            height: 100px
+        }
+    }
+
+}
