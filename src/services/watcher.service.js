@@ -69,8 +69,8 @@ function _loadWatchers() {
 
 
 
-function getEmptyWatcher(name = '', movies = []) {
-    return { _id: '', name, movies }
+function getEmptyWatcher(name = '', movies1 = '') {
+    return { _id: '', name, movies: [movies1] }
 }
 
 function _createWatchers() {

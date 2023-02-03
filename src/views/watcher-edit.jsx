@@ -41,7 +41,11 @@ export class WatcherEdit extends Component {
                 break;
         }
 
-        this.setState(prevState => ({ watcher: { ...prevState.watcher, [field]: value } }))
+        if (field === 'movies') {
+            let newValue = value.split(',')
+            this.setState(prevState => ({ watcher: { ...prevState.watcher, [field]: newValue } }))
+        }
+        else this.setState(prevState => ({ watcher: { ...prevState.watcher, [field]: value } }))
     }
 
     onBack = () => {
@@ -58,10 +62,22 @@ export class WatcherEdit extends Component {
                 <h1>{watcher._id ? 'Edit' : 'Add'} Watcher</h1>
                 <form onSubmit={this.onAddWatcher}>
                     <label htmlFor="name">Name</label>
-                    <input onChange={this.handleChange} value={name} type="text" name="name" id="name" required />
+                    <input onChange={this.handleChange}
+                        value={name}
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder='Enter name...'
+                        required />
                     <br />
                     <label htmlFor="movies">Movies</label>
-                    <input onChange={this.handleChange} value={movies} type="text" name="movies" id="movies" required />
+                    <input onChange={this.handleChange}
+                        value={movies}
+                        type="text"
+                        name="movies"
+                        id="movies"
+                        placeholder='Enter movies... xxx, yyy'
+                        required />
                     <br />
                     <button type='submit'>Save</button>
                     <button onClick={this.onBack}>Back</button>
