@@ -3,6 +3,7 @@ import { WatcherIndex } from './views/watcher-index';
 import { WatcherEdit } from './views/watcher-edit';
 
 import './assets/scss/global.scss';
+import { WatcherDetails } from './views/watcher-details';
 
 function App() {
     return (
