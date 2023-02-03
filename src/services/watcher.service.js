@@ -5,7 +5,7 @@ import { makeId } from './util.service.js'
 export const watcherService = {
     query,
     // save,
-    // remove,
+    remove,
     // getById,
     getEmptyWatcher,
     // tryRobot
@@ -14,6 +14,8 @@ export const watcherService = {
 const STORAGE_KEY = 'watchers'
 
 var gWatchers = _loadWatchers()
+console.log('gWatchers:', gWatchers)
+
 
 
 function query(filterBy) {
@@ -39,13 +41,13 @@ function query(filterBy) {
 //     return Promise.resolve({ ...robot })
 // }
 
-// function remove(id) {
-//     const idx = gRobots.findIndex(robot => robot._id === id)
-//     gRobots.splice(idx, 1)
-//     if (!gRobots.length) gRobots = gDefaultRobots.slice()
-//     storageService.store(STORAGE_KEY, gRobots)
-//     return Promise.resolve()
-// }
+function remove(id) {
+    const idx = gWatchers.findIndex(watcher => watcher._id === id)
+    gWatchers.splice(idx, 1)
+    if (!gWatchers.length) gWatchers = _loadWatchers().slice()
+    storageService.store(STORAGE_KEY, gWatchers)
+    return Promise.resolve()
+}
 
 // function save(robotToSave) {
 //     if (robotToSave._id) {
@@ -79,7 +81,7 @@ function _loadWatchers() {
 
 
 function getEmptyWatcher(name = '', movies = []) {
-    return { id: '', name, movies }
+    return { _id: '', name, movies }
 }
 
 function _createWatchers() {
@@ -90,12 +92,14 @@ function _createWatchers() {
         watchers.push(_createWatcher('fiak fgh', ['Mambo', 'Mocky']))
         watchers.push(_createWatcher('subali gg', ['Pambo', 'Pocky']))
         watchers.push(_createWatcher('mitsu ew', ['Aambo', 'Aocky']))
+
         storageService.store(STORAGE_KEY, watchers)
+        return watchers
     }
 }
 
 function _createWatcher(name, movies) {
     const watcher = getEmptyWatcher(name, movies)
-    watcher.id = makeId()
+    watcher._id = makeId()
     return watcher
 }

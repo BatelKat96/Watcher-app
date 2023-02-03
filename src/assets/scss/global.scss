@@ -17,10 +17,8 @@
 
 
 // Components
-@import "cmps/season-clock";
-@import "cmps/count-down";
-
-
+@import "cmps/watchers-list";
+@import "cmps/watcher-preview";
 
 .main-app {
     min-height: 100vh;

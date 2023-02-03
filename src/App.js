@@ -9,7 +9,7 @@ function App() {
                 {/* <AppHeader /> */}
                 <main className='container'>
                     <Switch>
-                        <Route path="/watcher" component={WatcherIndex} />
+                        <Route path="/" component={WatcherIndex} />
                     </Switch>
                 </main>
                 <footer>
